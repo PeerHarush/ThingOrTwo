@@ -1,0 +1,25 @@
+# common
+.DS_Store
+Thumbs.db
+*.log
+*.zip
+.env
+.env.*
+
+# node
+node_modules/
+dist/
+build/
+.vite/
+.cache/
+coverage/
+
+# prisma 
+prisma/dev.db*
+prisma/*.db-journal
+
+# editor
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
