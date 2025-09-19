@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: thing_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: thing_or_two
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: thing_backend
+    depends_on:
+      - db
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql://postgres:1234@db:5432/thing_or_two?schema=public
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    # רק מיגרציות בזמן עלייה (generate נעשה בזמן ה־build של האימג’)
+    command: sh -c "npx prisma migrate deploy && node dist/main.js"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: thing_frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"  # Nginx מאזין על 80 בתוך הקונטיינר
+
+volumes:
+  db_data:

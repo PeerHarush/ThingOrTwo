@@ -8,7 +8,7 @@ type Song = {
   createdAt: string;
 };
 
-const API = 'http://localhost:3000'; // מדבר ישירות עם הבקאנד, עוקף proxy
+const API = 'http://localhost:3000/api'; 
 
 export default function App() {
   const [songs, setSongs] = useState<Song[]>([]);
@@ -64,12 +64,27 @@ export default function App() {
     }
   }
 
+  async function resetSongs() {
+    if (!confirm('לאפס את רשימת השירים?')) return;
+    try {
+      const res = await fetch(`${API}/reset`, { method: 'POST' });
+      if (!res.ok) throw new Error(`Reset failed (${res.status})`);
+      setMessage('הרשימה אופסה בהצלחה');
+      await fetchSongs();
+    } catch (err: unknown) {
+      setMessage(err instanceof Error ? err.message : 'Network error');
+    }
+  }
+
   return (
     <div style={{ maxWidth: 900, margin: '40px auto', fontFamily: 'sans-serif' }}>
       <h1>ThingOrTwo – Song List</h1>
       <form onSubmit={uploadCsv} style={{ marginBottom: 20, display: 'flex', gap: 10 }}>
         <input type="file" accept=".csv" onChange={(e) => setFile(e.target.files?.[0] || null)} />
         <button disabled={!file || loading}>{loading ? 'מעלה...' : 'העלה CSV'}</button>
+        <button type="button" onClick={resetSongs} style={{ background: '#f44336', color: 'white' }}>
+          איפוס
+        </button>
         <span>{message}</span>
       </form>
 
