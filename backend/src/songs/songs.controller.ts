@@ -1,3 +1,5 @@
+//Handles all routes under /songs:
+
 import {
   Controller,
   Get,
@@ -9,18 +11,17 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { SongsService } from './songs.service';
 
-@Controller('songs')
+@Controller('songs') // Songs API endpoints
 export class SongsController {
   constructor(private readonly songs: SongsService) {}
 
-  @Get()
+  @Get() // Return list of songs
   async list() {
-    // מחזיר ממויין לפי שם הלהקה
     return this.songs.list();
   }
 
   @Post('upload')
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('file')) // form-data and attach file to request
   async upload(@UploadedFile() file?: Express.Multer.File) {
     if (!file) throw new BadRequestException('CSV file is required');
     const { inserted } = await this.songs.importFromCsv(file);

@@ -1,3 +1,5 @@
+// Provides a shared Prisma client and handles DB connect/disconnect.
+
 import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
@@ -7,10 +9,10 @@ export class PrismaService
   implements OnModuleInit, OnModuleDestroy
 {
   async onModuleInit() {
-    await this.$connect();
+    await this.$connect(); // connect to DB when module starts
   }
 
   async onModuleDestroy() {
-    await this.$disconnect();
+    await this.$disconnect(); // disconnect cleanly when app shuts down
   }
 }

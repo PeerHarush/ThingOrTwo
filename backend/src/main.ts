@@ -1,3 +1,5 @@
+//creates the NestJS app, enables CORS and starts listening.
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 

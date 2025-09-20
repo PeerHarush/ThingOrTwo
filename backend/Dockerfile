@@ -1,19 +1,23 @@
+# Dockerfile
+# Builds a production-ready NestJS app with Prisma client
+
 FROM node:20-alpine
 
 WORKDIR /app
 
-# מתקין תלויות (כולל Prisma CLI שיש לך ב-deps לפי package.json)
+# Install dependencies (including Prisma CLI from package.json)
 COPY package*.json ./
 RUN npm ci
 
-# מעתיקים את הקוד (כולל prisma/)
+# Copy source code (including prisma schema)
 COPY . .
 
-# מייצרים את Prisma Client כבר בזמן ה-build של האימג'
+# Generate Prisma Client during build (so container has it ready)
 RUN npx prisma generate
 
-# בונים את Nest ל-dist
+# Build NestJS project to /dist
 RUN npm run build
 
 EXPOSE 3000
+# Start the compiled app
 CMD ["node", "dist/main.js"]

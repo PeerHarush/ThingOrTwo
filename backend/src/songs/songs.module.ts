@@ -1,3 +1,5 @@
+// Groups controller, service and Prisma provider for song features.
+
 import { Module } from '@nestjs/common';
 import { SongsController } from './songs.controller';
 import { SongsService } from './songs.service';

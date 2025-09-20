@@ -1,11 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
+
 body {
   margin: 0;
   background: #f5d5ff3a;
   color: #1e293b;       
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
+
 h1 {
   color: #c300ff;
+  
 }
 .actions,
 .footerActions { 
@@ -23,7 +30,8 @@ h1 {
   text-align: center; 
 }
 
-.card {
+.card 
+{
   background: #ffffff; 
   border: 1px solid #e2e8f0; 
   border-radius: 12px;
@@ -38,6 +46,7 @@ h1 {
   text-align: center;
   background: #f7dbf95c;
   cursor: pointer;
+  
 }
 
 .dropzone.over {
@@ -50,6 +59,7 @@ h1 {
   color: #c300ff;
   }
 
+  
 .chooseBtn {
   display:inline-flex;
   align-items:center; 
@@ -58,7 +68,7 @@ h1 {
   margin-top: 10px; 
   padding:10px 16px; 
   border-radius:12px;
-  background:#c10df83a;;
+  background:#c300ff55;;
   color:#081018; 
   font-weight:700; 
   cursor:pointer; 
@@ -70,28 +80,41 @@ h1 {
 }
 
 .btn.primary {
-  background:#60a5fa;    
+  background: #60a5fa;    
   color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 30px;
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.btn.primary:hover {
+  background: #3e92f9;    
+  transform: scale(1.03);
 }
 
 .btn.danger {
-  background: #ff0000;
+  background: #fb4c4c;
   color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 30px;
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
 }
+
+.btn.danger:hover {
+    background: #ff0026;
+  transform: scale(1.03);
+}
+
 
 .tableWrap {
   overflow: auto;
-  background: #f7dbf95c;
 
   border: 1px solid #e2e8f0;
   border-radius: 8px;
 }
+
 
 .table {
   width: 100%;
@@ -106,5 +129,17 @@ h1 {
 
 .title{
   font-size: large;
+  background:#faf5ff;
+    color: #c300ff;
 }
 
+
+.songLink {
+  color: #1a73e8;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.songLink:hover {
+  color: #c300ff;
+}
