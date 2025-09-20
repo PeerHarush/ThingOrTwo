@@ -1,42 +1,110 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  margin: 0;
+  background: #f5d5ff3a;
+  color: #1e293b;       
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h1 {
+  color: #c300ff;
+}
+.actions,
+.footerActions { 
+  display: flex;
+  justify-content: center; 
+  margin-top: 12px;
+  gap: 10px; 
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.wrap {
+  max-width: 900px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 0 16px;
+  text-align: center; 
 }
 
 .card {
-  padding: 2em;
+  background: #ffffff; 
+  border: 1px solid #e2e8f0; 
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-.read-the-docs {
-  color: #888;
+.dropzone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 10px;
+  padding: 30px 16px;
+  text-align: center;
+  background: #f7dbf95c;
+  cursor: pointer;
 }
+
+.dropzone.over {
+  border-color: #ffffff;    
+}
+
+.icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #c300ff;
+  }
+
+.chooseBtn {
+  display:inline-flex;
+  align-items:center; 
+  justify-content:center;
+  gap:10px; 
+  margin-top: 10px; 
+  padding:10px 16px; 
+  border-radius:12px;
+  background:#c10df83a;;
+  color:#081018; 
+  font-weight:700; 
+  cursor:pointer; 
+  user-select:none;
+}
+
+.chooseBtn input {
+  display:none;
+}
+
+.btn.primary {
+  background:#60a5fa;    
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 30px;
+}
+
+.btn.danger {
+  background: #ff0000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 30px;
+}
+
+.tableWrap {
+  overflow: auto;
+  background: #f7dbf95c;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.title{
+  font-size: large;
+}
+
